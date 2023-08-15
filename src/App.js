@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState} from 'react';
+import Formulario from './Components/Formulario';
+import Cajas from './Components/Cajas';
 
-function App() {
+const App = (props) => {
+  const [currentColor, setCurrentColor] = useState([]);
+
+  const changeToNewColor = (newColor) => {
+    setCurrentColor([...currentColor, newColor]);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Formulario newColor={changeToNewColor}/>
+      <Cajas colors={currentColor}/>
     </div>
   );
 }
